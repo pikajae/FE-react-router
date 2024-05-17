@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const data = {
     "맘스터치": {
@@ -25,9 +28,19 @@ const data = {
 
 
 const Product = () => {
+    const navigate = useNavigate();
+    const {burger}=useParams();
+    const barandName=data[burger];
 
     return (
         <>
+        {barandName ?
+        <>
+            <h1>{burger}</h1>
+            <p>{barandName.title}</p>
+            <p>{barandName.price}</p> 
+            </> : <h1>해당 브랜드의 제품을 찾을 수 없습니다.</h1>
+        }
         </>
     )
 }
